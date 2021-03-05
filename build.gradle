@@ -24,3 +24,28 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+// 配置依赖库版本号
+ext {
+    android = [
+            compileSdkVersion: 30,
+            buildToolsVersion: "29.0.3",
+            minSdkVersion    : 21,
+            targetSdkVersion : 30,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+    version = [
+            appcompat       : "1.2.0",
+            coreKtx         : "1.3.2",
+            material        : "1.2.1",
+            constraintlayout: "2.0.4",
+            retrofit        : "2.4.0",
+            glide           : "4.5.0",
+            life            : "1.1.1",
+            // test
+            junit           : '4.12',
+            extJunit        : '1.1.2',
+            espressoCore    : '3.3.0'
+    ]
+}
