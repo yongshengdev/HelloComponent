@@ -4,6 +4,7 @@ plugins {
 apply from: "../common_impl.gradle"
 
 dependencies {
+    api project(path: ':componentbase')
     api "androidx.appcompat:appcompat:$rootProject.ext.version.appcompat"
     api "com.google.android.material:material:$rootProject.ext.version.material"
     api "androidx.constraintlayout:constraintlayout:$rootProject.ext.version.constraintlayout"
