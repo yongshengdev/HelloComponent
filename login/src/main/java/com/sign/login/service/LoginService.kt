@@ -1,7 +1,7 @@
 package com.sign.login.service
 
 import android.text.TextUtils
-import com.sign.componentbase.service.`interface`.ILoginService
+import com.sign.componentbase.service.interf.ILoginService
 import com.sign.login.manage.AccountManager
 
 /**

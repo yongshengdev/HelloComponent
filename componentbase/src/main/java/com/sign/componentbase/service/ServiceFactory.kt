@@ -1,6 +1,6 @@
 package com.sign.componentbase.service
 
-import com.sign.componentbase.service.`interface`.ILoginService
+import com.sign.componentbase.service.interf.ILoginService
 import com.sign.componentbase.service.empty.EmptyLoginService
 
 /**

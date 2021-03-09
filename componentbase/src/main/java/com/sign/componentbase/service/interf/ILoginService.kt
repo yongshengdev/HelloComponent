@@ -1,4 +1,4 @@
-package com.sign.componentbase.service.`interface`
+package com.sign.componentbase.service.interf
 
 /**
  * Created by CaoYongSheng
