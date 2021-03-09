@@ -43,6 +43,8 @@ ext {
             retrofit        : "2.4.0",
             glide           : "4.5.0",
             life            : "1.1.1",
+            arouter         : "1.5.1",
+            arouterCompiler : "1.5.1",
             // test
             junit           : '4.12',
             extJunit        : '1.1.2',

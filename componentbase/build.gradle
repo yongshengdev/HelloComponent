@@ -4,5 +4,5 @@ plugins {
 apply from: "../common_impl.gradle"
 
 dependencies {
-
+    api "com.alibaba:arouter-api:$rootProject.ext.version.arouter"
 }

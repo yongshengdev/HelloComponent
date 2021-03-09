@@ -25,7 +25,11 @@ android {
         jvmTarget = '1.8'
     }
 }
-
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -34,4 +38,6 @@ dependencies {
     testImplementation "junit:junit:$rootProject.ext.version.junit"
     androidTestImplementation "androidx.test.ext:junit:$rootProject.ext.version.extJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.version.espressoCore"
+    // arouter-compiler 的注解依赖需要所有使用 ARouter 的 module 都添加依赖
+    kapt "com.alibaba:arouter-compiler:$rootProject.ext.version.arouterCompiler"
 }
