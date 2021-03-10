@@ -1,7 +1,6 @@
 // 项目(app/module)的通用gradle配置
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -24,12 +23,20 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    // viewBinding
+    buildFeatures {
+        dataBinding = true // for data binding
+    }
 }
+
+// arouter module name
 kapt {
     arguments {
         arg("AROUTER_MODULE_NAME", project.getName())
     }
 }
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

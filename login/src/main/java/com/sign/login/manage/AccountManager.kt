@@ -9,6 +9,6 @@ class AccountManager {
 
     companion object {
         @JvmStatic
-        val accountId: String? = "3721"
+        var accountId: String? = null
     }
 }
