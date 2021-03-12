@@ -1,5 +1,6 @@
 package com.sign.card_export
 
+import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.launcher.ARouter
 
 /**
@@ -15,6 +16,12 @@ class CardExportUtils {
         @JvmStatic
         fun openCardActivity() {
             ARouter.getInstance().build(CardRouteTable.ACTIVITY_CARD).navigation()
+        }
+
+        @JvmStatic
+        fun getCardFragment(): Fragment {
+            return ARouter.getInstance().build(CardRouteTable.FRAGMENT_CARD)
+                .navigation() as Fragment
         }
 
         @JvmStatic

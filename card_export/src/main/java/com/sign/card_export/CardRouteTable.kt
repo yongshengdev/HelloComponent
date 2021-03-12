@@ -12,4 +12,5 @@ object CardRouteTable {
 
     const val SERVICE_CARD = "/card/cardService"
 
+    const val FRAGMENT_CARD = "/card/cardFragment"
 }
