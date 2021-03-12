@@ -21,7 +21,7 @@ class CardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_card, container, false)
+        return inflater.inflate(R.layout.card_fragment_card, container, false)
     }
 
 }

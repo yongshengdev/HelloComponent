@@ -9,6 +9,7 @@ if (cardAsModule.toBoolean()) {
 apply from: "../common_impl.gradle"
 
 android {
+    resourcePrefix "card_"
     defaultConfig {
         // 单独调试时才需要添加applicationId，集成调试时移出
         if (!cardAsModule.toBoolean()) {

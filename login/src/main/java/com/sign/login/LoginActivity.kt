@@ -9,17 +9,17 @@ import com.alibaba.android.arouter.facade.callback.NavigationCallback
 import com.alibaba.android.arouter.launcher.ARouter
 import com.sign.base.config.RouterConfig
 import com.sign.componentbase.service.ServiceFactory
-import com.sign.login.databinding.ActivityLoginBinding
+import com.sign.login.databinding.LoginActivityLoginBinding
 import com.sign.login.manage.AccountManager
 
 @Route(path = RouterConfig.LOGIN_ACTIVITY)
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: LoginActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = LoginActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnLogin.setOnClickListener {
             AccountManager.accountId = "3721"

@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sign.login">
 
-    <application android:theme="@style/Theme.HelloComponent">
+    <application
+        android:theme="@style/LoginTheme.HelloComponent">
         <activity
             android:name=".LoginActivity"
             android:label="登陆"></activity>
