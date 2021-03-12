@@ -27,4 +27,10 @@ dependencies {
     if (loginAsModule) {
         implementation project(":login")
     }
+    if (homeAsModule) {
+        implementation project(":home")
+    }
+    if (cardAsModule) {
+        implementation project(":card")
+    }
 }

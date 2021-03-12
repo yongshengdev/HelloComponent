@@ -1,3 +1,6 @@
+include ':home'
+include ':card_export'
+include ':card'
 include ':componentbase'
 include ':login'
 include ':base'

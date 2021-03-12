@@ -49,5 +49,8 @@ class MainActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             ARouter.getInstance().build(RouterConfig.LOGIN_ACTIVITY).navigation()
         }
+        binding.btnToHome.setOnClickListener {
+            ARouter.getInstance().build(RouterConfig.HOME_ACTIVITY).navigation()
+        }
     }
 }

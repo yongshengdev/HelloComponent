@@ -1,0 +1,45 @@
+// 根据主工程下gradle.properties文件配置，设置组件的工程类型为应用/库
+if (homeAsModule.toBoolean()) {
+    // 输出aar包
+    apply plugin: 'com.android.library'
+} else {
+    // 输出apk
+    apply plugin: 'com.android.application'
+}
+apply from: "../common_impl.gradle"
+apply plugin: 'kotlin-android'
+
+android {
+    defaultConfig {
+        // 单独调试时才需要添加applicationId，集成调试时移出
+        if (!homeAsModule.toBoolean()) {
+            applicationId "com.sign.home"
+        }
+    }
+
+    sourceSets {
+        main {
+            // 单独调试与集成调试时使用不同的 AndroidManifest.xml 文件
+            if (homeAsModule.toBoolean()) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(path: ':base')
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation project(path: ':card_export')
+}
