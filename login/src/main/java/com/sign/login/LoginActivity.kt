@@ -2,14 +2,17 @@ package com.sign.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.widget.Toast
+import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.facade.callback.NavigationCallback
 import com.alibaba.android.arouter.launcher.ARouter
+import com.sign.base.config.RouterConfig
+import com.sign.componentbase.service.ServiceFactory
 import com.sign.login.databinding.ActivityLoginBinding
 import com.sign.login.manage.AccountManager
 
-@Route(path = "/account/login")
+@Route(path = RouterConfig.LOGIN_ACTIVITY)
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
@@ -27,21 +30,42 @@ class LoginActivity : AppCompatActivity() {
             updateAccountStatus()
         }
         binding.btnShare.setOnClickListener {
-            if (TextUtils.isEmpty(AccountManager.accountId)) {
-                Toast.makeText(this@LoginActivity, "请先登陆", Toast.LENGTH_LONG).show()
-            } else {
-                ARouter.getInstance().build("/share/share")
-                    .withString("shareTitle", "This is share Title.").navigation()
-            }
+            ARouter.getInstance().build(RouterConfig.SHARE_ACTIVITY)
+                .withString(
+                    RouterConfig.Params.SHARE_TITLE,
+                    "This is share Title from LoginActivity."
+                )
+                .navigation(this@LoginActivity, object : NavigationCallback {
+                    override fun onLost(postcard: Postcard?) {
+
+                    }
+
+                    override fun onFound(postcard: Postcard?) {
+
+                    }
+
+                    // 注意：在子线程中回调
+                    override fun onInterrupt(postcard: Postcard?) {
+                        runOnUiThread {
+                            Toast.makeText(this@LoginActivity, "请先登陆", Toast.LENGTH_LONG).show()
+                        }
+                    }
+
+                    override fun onArrival(postcard: Postcard?) {
+
+                    }
+
+                })
         }
         updateAccountStatus()
     }
 
     private fun updateAccountStatus() {
-        if (TextUtils.isEmpty(AccountManager.accountId)) {
+        if (!ServiceFactory.getInstance().getLoginService().isLogin()) {
             binding.tvState.text = "当前状态：未登录"
         } else {
-            binding.tvState.text = "当前状态：已登录 用户id：" + AccountManager.accountId
+            binding.tvState.text =
+                "当前状态：已登录 用户id：" + ServiceFactory.getInstance().getLoginService().getAccountId()
         }
     }
 }

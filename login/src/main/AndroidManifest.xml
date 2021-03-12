@@ -3,7 +3,9 @@
     package="com.sign.login">
 
     <application android:theme="@style/Theme.HelloComponent">
-        <activity android:name=".LoginActivity"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="登陆"></activity>
     </application>
 
 </manifest>

@@ -5,15 +5,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.sign.componentbase.service.ServiceFactory
+import com.alibaba.android.arouter.launcher.ARouter
+import com.sign.base.config.RouterConfig
 import com.sign.share.databinding.ActivityShareBinding
 
-@Route(path = "/share/share")
+@Route(path = RouterConfig.SHARE_ACTIVITY)
 class ShareActivity : AppCompatActivity() {
 
     @JvmField
     @Autowired
-    var accountId: String? = null
+    var shareTitle: String? = null
 
     private lateinit var binding: ActivityShareBinding
 
@@ -21,11 +22,13 @@ class ShareActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityShareBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        ARouter.getInstance().inject(this);
         binding.btnShare.setOnClickListener {
-            val text = if (ServiceFactory.getInstance().getLoginService()
-                    .isLogin()
-            ) "分享成功 shareTitle：${intent.getStringExtra("shareTitle")}" else "分享失败，账号未登录"
-            Toast.makeText(this@ShareActivity, text, Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this@ShareActivity,
+                "分享成功 shareTitle：$shareTitle",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 }

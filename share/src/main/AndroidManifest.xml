@@ -3,7 +3,8 @@
     package="com.sign.share">
 
     <application android:theme="@style/Theme.HelloComponent">
-        <activity android:name=".ShareActivity"></activity>
+        <activity android:name=".ShareActivity"
+            android:label="分享"></activity>
     </application>
 
 </manifest>
