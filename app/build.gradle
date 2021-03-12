@@ -22,6 +22,9 @@ android {
 dependencies {
     implementation project(path: ':base')
     if (shareAsModule) {
+        // 本来主工程对业务组件的依赖最好是通过runtimeOnly来实现，可以避免无意中引起的对业务组件的直接访问
+        // 但是由于DataBinding需要在编译期生成对应资源文件，而runtimeOnly会导致编译器资源文件无法生成，运行时找不到资源引起异常
+//        runtimeOnly project(":share")
         implementation project(":share")
     }
     if (loginAsModule) {
